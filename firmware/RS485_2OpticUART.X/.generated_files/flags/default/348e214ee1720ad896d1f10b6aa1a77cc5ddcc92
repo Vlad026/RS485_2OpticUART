@@ -1,0 +1,1 @@
+ $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -fno-common -I"../src" -I"../src/config/default" -Werror   -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)    D:\Sevmash\RS485_2OpticUART\firmware\src\config\default\stdio\xc32_monitor.c
