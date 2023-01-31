@@ -1,21 +1,3 @@
-/*******************************************************************************
-  Main Source File
-
-  Company:
-    Microchip Technology Inc.
-
-  File Name:
-    main.c
-
-  Summary:
-    This file contains the "main" function for a project.
-
-  Description:
-    This file contains the "main" function for a project.  The
-    "main" function calls the "SYS_Initialize" function to initialize the state
-    machines of all modules in the system
- *******************************************************************************/
-
 // *****************************************************************************
 // *****************************************************************************
 // Section: Included Files
@@ -189,7 +171,7 @@ int main() {
         }
 
         UART1ReadCount = UART1_ReadCountGet();
-        if (UART1ReadCount > 0  && UART1_Read(UART1buf, UART1ReadCount)) { // UART1 GPT1
+        if (UART1ReadCount > 0  && UART1_Read(UART1buf, UART1ReadCount)) { // UART1=GPT1
             for (i = 0; i < UART1ReadCount; i++, UART1CommandCursor++) {
                 if (UART1buf[i] == ':') UART1CommandCursor = 0;
                 UART1command[UART1CommandCursor] = UART1buf[i];
@@ -209,7 +191,7 @@ int main() {
                         counterWaitUartI1 = 0;
                         for (uiValue = 4; uiValue <= 8; uiValue++) I1[uiValue] = UART1command[uiValue]; 
                         I1ch1 = (charToByte(I1[5])*1000 + charToByte(I1[6])*100 + charToByte(I1[7])*10 + charToByte(I1[8]));                   
-                        if (I1[4] == '-') I1ch1 = -I1ch1;   
+                        if (I1[4] == '-') I1ch1 = -I1ch1; 
                         continue;
                     }
                     if (includeSubStr(UART1command, UART1CommandCursor, I2, 3)) {
@@ -244,7 +226,7 @@ int main() {
                     PORTBbits.RB0 ^= 1; // LED                       
                     if (includeSubStr(UART2command, UART2CommandCursor, B1, 3)) {
                         counterWaitUartB3 = 0;
-                        B3[4] = (UART2command[4] == '1') ? '1' : '0'; // condition of CB1                   
+                        B3[4] = (UART2command[4] == '1') ? '1' : '0'; // condition of CB3                   
                         continue;
                     }
                     if (includeSubStr(UART2command, UART2CommandCursor, B2, 3)) {
